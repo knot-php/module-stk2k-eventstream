@@ -9,15 +9,15 @@ use KnotLib\Kernel\EventStream\Channels;
 use KnotLib\Kernel\EventStream\Events;
 use KnotLib\Kernel\Exception\ModuleInstallationException;
 use KnotLib\Kernel\Kernel\ApplicationInterface;
-use KnotLib\Kernel\Module\AbstractModule;
-use KnotLib\Kernel\Module\Components;
+use KnotLib\Kernel\Module\ModuleInterface;
+use KnotLib\Kernel\Module\ComponentTypes;
 
 use KnotPhp\Module\Stk2kEventStream\Adapter\Stk2kEventStreamAdapter;
 
-class Stk2kEventStreamModule extends AbstractModule
+class Stk2kEventStreamModule implements ModuleInterface
 {
     /**
-     * Declare dependent on another modules
+     * Declare dependency on another modules
      *
      * @return array
      */
@@ -25,13 +25,13 @@ class Stk2kEventStreamModule extends AbstractModule
     {
         return [];
     }
-
+    
     /**
      * Declare dependent on components
      *
      * @return array
      */
-    public static function requiredComponents() : array
+    public static function requiredComponentTypes() : array
     {
         return [];
     }
@@ -43,7 +43,7 @@ class Stk2kEventStreamModule extends AbstractModule
      */
     public static function declareComponentType() : string
     {
-        return Components::EVENTSTREAM;
+        return ComponentTypes::EVENTSTREAM;
     }
 
     /**
